@@ -21,7 +21,7 @@
 ---|---|---
 core            | spring-core  | 핵심 모듈 - 어노테이션, 컨버터, 상수, 유틸리티
 beans           | spring-beans | 객체 라이프사이클 관리
-context         | spring-context | 객체 라이프사이클 관리, 국제화, 스케쥴링, Cache 제공   
+context         | spring-context | 객체 라이프사이클 관리, 국제화, 스케쥴링, Cache 등 제공   
 context support | spring-context-support | Mail, Quartz, Ehcache, Freemarker 같은 부가 기능 제공   
 expression      | spring-expression | EL을 확장한 스프링 표현식 언어(SpEL) 지원
 
@@ -32,7 +32,7 @@ expression      | spring-expression | EL을 확장한 스프링 표현식 언어
 모듈 | 아티팩트 | 설명
 ---|---|---
 aop             | spring-aop	 | 스프링 빈즈를 위한 aop 기능 제공  
-aspects         | spring-aspects |   
+aspects         | spring-aspects | AspectJ를 기반으로 한 스프링 aspect
 
 
 
