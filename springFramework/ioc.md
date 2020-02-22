@@ -10,7 +10,7 @@ Inversion of Control
 : IoC 원칙에서 흐름을 제어하는 주체    
 
 ex.
-- servlet container : 서블릿 인터페이스를 구현한 클래스 관리
+- servlet container : 서블릿 인터페이스를 구현한 객체 관리
 - spring container : 스프링 빈즈 관리  
 
 
@@ -52,7 +52,7 @@ Dependency Injection
 : 의존성 주입   
 : IoC 원칙을 구현하기 위한 디자인 패턴    
 : 객체 간 의존 관계를 설정 정보를 통해 정의하는 디자인 패턴          
-: constructor, property(setter), method를 통해 의존성 주입     
+: constructor, property(setter), interface를 통해 의존성 주입     
 
 
 **DI Container**      
