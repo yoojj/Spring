@@ -17,7 +17,7 @@
 
 모듈 | 아티팩트 | 설명
 ---|---|---
-core            | spring-core  | 어노테이션, 컨버터, 상수, 유틸리티(cglib 등) 제공   
+core            | spring-core  | 컨버터, 상수, cglib, asm, 유틸리티 등 제공   
 beans           | spring-beans | DI 구현 제공  
 context         | spring-context | DI, 애플리케이션 컨텍스트 구현, 국제화, 스케쥴링, Cache 등 제공
 context support | spring-context-support | Mail, Quartz, Ehcache, Freemarker 등 부가 기능 제공   
