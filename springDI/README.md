@@ -1,15 +1,27 @@
 # Spring DI 
 
 
-**구조**
+## XmlConfig
 
 ```
-springDI/
-├── lib/
-│    ├── spring-core.jar
-│    ├── spring-beans.jar
-│    ├── spring-context.jar
-│    └── common-logging
-└── src/
+lib/
+├── spring-core.jar
+├── spring-beans.jar
+└── common-logging.jar 
+
+```
+
+
+
+## JavaConfig 
+
+```
+lib/
+├── spring-core.jar
+├── spring-beans.jar
+├── spring-context.jsr
+├── spring-aop.jar
+├── spring-expression.jar
+└── common-logging.jar 
 
 ```
