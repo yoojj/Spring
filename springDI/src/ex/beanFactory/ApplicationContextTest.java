@@ -12,15 +12,6 @@ import ex.bean.BoardService;
 
 public class ApplicationContextTest {
 	
-	// - ApplicationContext
-	// - ConfigurableApplicationContext
-	// - AbstractApplicationContext
-	// - GenericApplicationContext
-	// - AnnotationconfigApplicationContext
-	// - GenericGroovyApplicationContext 
-	
-	
-	
 	String beanLocation;
 	
 	@Before 
