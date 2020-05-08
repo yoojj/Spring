@@ -15,12 +15,12 @@ public class JasyptTest {
 	@Test
 	public void test() {
 		
-		final StandardPBEStringEncryptor jastypt = new StandardPBEStringEncryptor();
+		final StandardPBEStringEncryptor jasypt = new StandardPBEStringEncryptor();
 	
-		jastypt.setAlgorithm("PBEWithMD5AndDES");
-		jastypt.setPassword("key");
+		jasypt.setAlgorithm("PBEWithMD5AndDES");
+		jasypt.setPassword("key");
 		
-		String password = jastypt.encrypt("password");
+		String password = jasypt.encrypt("password");
 		
 		System.out.println(password);
 		
