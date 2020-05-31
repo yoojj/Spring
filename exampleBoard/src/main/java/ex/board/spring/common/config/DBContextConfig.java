@@ -1,4 +1,4 @@
-package ex.board.spring.config;
+package ex.board.spring.common.config;
 
 import java.io.IOException;
 
@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @Import(PropertyPlaceholderConfig.class)
+@MapperScan("ex.board.spring.**.mapper")
 public class DBContextConfig {
 	
 	@Value("${JDBC.Driver}")
@@ -55,12 +57,12 @@ public class DBContextConfig {
 	}
 
 	@Bean
-	public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource, 
-			ApplicationContext applicationContext) throws IOException {
+	public SqlSessionFactoryBean sqlSessionFactoryBean(ApplicationContext applicationContext) 
+			throws IOException {
 	
 		final SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		
-		factoryBean.setDataSource(dataSource);
+		factoryBean.setDataSource(this.dataSource());
 		factoryBean.setConfigLocation(applicationContext.getResource("classpath:sql/sql-mapping-config.xml"));
 		factoryBean.setMapperLocations(applicationContext.getResources("classpath:sql/mappers/*.xml"));
 		

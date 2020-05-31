@@ -1,4 +1,4 @@
-package ex.board.spring.config;
+package ex.board.spring.common.config;
 
 import javax.servlet.Filter;
 
