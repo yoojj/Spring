@@ -1,4 +1,4 @@
-package ex.board.spring.result;
+package ex.board.spring.common.result;
 
 import java.util.HashMap;
 
