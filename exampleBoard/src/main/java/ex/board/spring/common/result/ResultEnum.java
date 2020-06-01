@@ -3,7 +3,8 @@ package ex.board.spring.common.result;
 public enum ResultEnum {
 
 	ERROR (0, "ERROR"),
-	SUCCESS(1, "SUCCESS");
+	SUCCESS(1, "SUCCESS"),
+	EXCEPTION(-1, "EXCEPTION");
 	
 	private final int code;
 	private final String description;

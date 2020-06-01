@@ -42,6 +42,14 @@ public class Result implements Serializable {
 		this.resultMap = map;
 	}
 	
+	public void setException(Exception e) {
+
+		this.code = ResultEnum.EXCEPTION.getCode();
+		this.message = e.getMessage();
+		this.result = e;
+
+	}
+	
 	public String toSting(){
 		
 		final StringBuffer sb = new StringBuffer();
