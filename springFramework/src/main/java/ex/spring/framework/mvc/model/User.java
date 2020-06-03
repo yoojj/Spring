@@ -1,4 +1,4 @@
-package ex.spring.framework.vo;
+package ex.spring.framework.mvc.model;
 
 public class User {
 
