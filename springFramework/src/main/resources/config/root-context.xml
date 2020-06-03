@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!--  
+# Root Web Application Context (WAC)
+: org.springframework.web.context.ContextLoaderListener 의해 생성  
+ 
+: 루트 컨텍스트는 서블릿 컨텍스트에 접근이 불가능 함 
+
+: @Configuration, @Component, @Service, @Repository 
+: 로깅, DB, DAO 등 웹 애플리케이션과 관련없는 빈 정의  
+: 여러 서블릿 컨텍스트가 공유할 빈 정의  
+
+-->
+
+
+
+	<context:component-scan base-package="ex.spring.framework">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<!--
+	<context:component-scan>
+	: @Component @Controller @Service @Repository
+	: 선언된 패키지를 스캔해 기본 어노테이션이 사용된 클래스를 찾아 빈으로 등록
+	: component-scan 선언시 annotation-config 생략 가능
+
+
+	<context:annotation-config>
+	: @PostConstruct @PreDestroy @Resource
+	: @Inject @Autowired @Qualifie @Value
+
+
+	! component-scan은 빈 등록을 위해 정의된 패키지를 스캔하고
+	! annotation-config은 컨텍스트 파일이나 컴포넌트 스캔에 의해 등록된 빈의 어노테이션을 활성화
+	-->
+
+
+
+	<task:annotation-driven />
+
+
+
+</beans>
