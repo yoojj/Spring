@@ -12,7 +12,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:config/root-context.xml", "classpath:config/app/db-context.xml"})
+@ContextConfiguration(locations = {
+		"classpath:config/root-context.xml", 
+		"classpath:config/app/servlet-context.xml",
+		"classpath:config/app/db-context.xml"})
 @WebAppConfiguration
 public class MySqlConnectionTest {
 
