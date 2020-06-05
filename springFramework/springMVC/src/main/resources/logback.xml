@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration scan="true" scanPeriod="180 seconds">
+
+
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{HH:mm:ss} %-5level [%logger{36}] :: %msg%n</pattern>
+		</layout>
+	</appender>
+	<!--
+	%d               로그 발생 시간 SimpleDateFormat 형식으로 출력 
+	%thread          로그 발생 스레드 이름 출력 
+	$-5level         로깅 수준
+	%logger{length}  로그 발생 패키지와 클래스명 출력 
+	
+	%msg             로그 메시지 출력 
+	%n               줄바꿈
+	
+	%highlight()
+	%magenta()
+	%cyan()
+	-->
+	
+
+
+	<logger name="org.springframework" level="INFO" />
+	
+	<logger name="jdbc"                level="OFF"/>
+	<logger name="jdbc.sqlonly"        level="DEBUG"/>
+	<logger name="jdbc.sqltiming"      level="OFF"/>
+	<logger name="jdbc.audit"          level="OFF"/>
+	<logger name="jdbc.resultset"      level="OFF"/>
+	<logger name="jdbc.resultsettable" level="DEBUG"/>
+	<logger name="jdbc.connection"     level="OFF"/>
+
+	<logger name="org.mybatis"         level="DEBUG" />
+
+	<logger name="ex.spring.framework" level="DEBUG" />
+	<!--
+	 additivity="false" 해당 패키지에만 적용되고 하위 패키지에는 적용되지 않음 
+	-->
+
+
+
+	<root level="INFO">
+		<appender-ref ref="CONSOLE"/>
+	</root>
+	
+	
+
+</configuration>
