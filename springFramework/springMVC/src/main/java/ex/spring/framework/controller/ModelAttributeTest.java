@@ -11,10 +11,10 @@ import ex.spring.framework.domain.TestVO;
 public class ModelAttributeTest {
 
 	@GetMapping("model-attribute-param")
-	public String modelAttributeParamPage(@ModelAttribute("param") TestVO param) throws Exception {
+	public String modelAttributeParamPage(@ModelAttribute("test") TestVO vo) throws Exception {
 
-		param.setStr("param");
-		param.setNum(111);
+		vo.setStr("param");
+		vo.setNum(111);
 		
 		return "test/model-attribute";
 	}
