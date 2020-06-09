@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+<!--  
+LocaleResolver 	
+
+- AcceptHeaderLocaleResolver 
+- CookieLocaleResolver	     
+- SessionLocaleResolver      
+- FixedLocaleResolver 
+-->
+
+
+	
+	<!--  
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
+	
+	AceeptHeaderLocaleResolver
+	: 별도 설정이 없을 경우 기본으로 사용되는 LocaleResolver 
+	: 브라우저가 설정한 HTTP Accept-Language 값을 사용해 local 지정
+	-->
+
+
+
+	<!--  
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="ko"/>
+		<property name="cookieName"    value="" />
+		<property name="cookieMaxAge"  value="" />
+		<property name="cookiePath"    value="" />
+	</bean>
+	
+	CookieLocaleResolver	
+	: Cookie를 사용해 locale 지정
+	: Cookie에 locale 정보가 없을 경우 경우 defaultLocale 값으로 locale을 지정하고 
+	  defaultLocale 값이 null일 경우 HTTP Accept-Language 값을 사용해 local 지정
+	
+	http://localhost:8080/?lang=ko
+	http://localhost:8080/?lang=en
+	-->
+	
+		
+
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="ko" />
+	</bean>
+	<!-- 
+	SessionLocaleResolver 
+	: HttpSession을 사용해 local 지정
+	: HttpSession에 local 정보가 없을 경우 defaultLocale 값으로 locale을 지정하고 
+	  defaultLocale 값이 null일 경우 HTTP Accept-Language 값을 사용해 local 지정
+	-->
+	
+	
+	
+	<!--  
+	<bean id="fixedLocaleResolver" class="org.springframework.web.servlet.i18n.FixedLocaleResolver">
+		<property name="defaultLocale" value="ko"/>
+	</bean>
+	
+	FixedLocaleResolver
+	: 애플리케이션 전체에 적용될 고정 local 지정 
+	-->
+	
+	
+
+	<mvc:interceptors>
+		<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang"/>
+		</bean>
+	</mvc:interceptors>
+	<!--
+	LocaleChangeInterceptor
+	: locale 변경을 위한 인터셉터	
+	-->
+	
+	
+	
+</beans>
