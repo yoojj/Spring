@@ -5,14 +5,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-<!--  
-LocaleResolver 	
-
-- AcceptHeaderLocaleResolver 
-- CookieLocaleResolver	     
-- SessionLocaleResolver      
-- FixedLocaleResolver 
--->
+	<!--  
+	LocaleResolver 	
+	
+	구현 
+	- AcceptHeaderLocaleResolver 
+	- CookieLocaleResolver	     
+	- SessionLocaleResolver      
+	- FixedLocaleResolver 
+	-->
 
 
 	
@@ -26,25 +27,21 @@ LocaleResolver
 
 
 
-	<!--  
+	<!--  	
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
 		<property name="defaultLocale" value="ko"/>
-		<property name="cookieName"    value="" />
-		<property name="cookieMaxAge"  value="" />
-		<property name="cookiePath"    value="" />
+		<property name="cookieName"    value="이름 지정" />
+		<property name="cookieMaxAge"  value="만료 기간" />
+		<property name="cookiePath"    value="경로 지정" />
 	</bean>
-	
 	CookieLocaleResolver	
 	: Cookie를 사용해 locale 지정
 	: Cookie에 locale 정보가 없을 경우 경우 defaultLocale 값으로 locale을 지정하고 
 	  defaultLocale 값이 null일 경우 HTTP Accept-Language 값을 사용해 local 지정
-	
-	http://localhost:8080/?lang=ko
-	http://localhost:8080/?lang=en
 	-->
 	
 		
-
+		
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 		<property name="defaultLocale" value="ko" />
 	</bean>
@@ -76,6 +73,9 @@ LocaleResolver
 	<!--
 	LocaleChangeInterceptor
 	: locale 변경을 위한 인터셉터	
+		
+	http://localhost:8080/?lang=ko
+	http://localhost:8080/?lang=en
 	-->
 	
 	
