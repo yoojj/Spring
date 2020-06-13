@@ -1,0 +1,60 @@
+/***** 공통 *****/
+body {background:#f5f5f5;}
+.common-wrap {width:80%;margin:50px auto;}
+
+
+
+/***** 공통 메뉴 *****/
+.common-nav-wrap {}
+.common-nav li {display:inline-block;width:100px;margin-right:2px;line-height:30px;text-align:center;
+	border-radius:5px 5px 0 0;background:#eee;}
+.common-nav li:first-child {background:#e5e5e5;}
+.common-nav li a {display:inline-block;width:100%;line-height:30px;border-radius:5px 5px 0 0;}
+
+.common-nav li a:hover {color:#fff;background:#333;}
+
+
+/***** 공통 컨텐츠 *****/
+.common-content-wrap {width:auto;padding:5% 10%;box-size:border-box;background:#fff;}
+.content-title {margin-bottom:25px;}
+.content-title::after {display:block;content:"";width:15px;margin-top:15px;margin-bottom:50px;border-bottom:thin solid #999;}
+
+
+
+
+/***** 공통 버튼 *****/
+.common-btn-wrap {}
+.common-btn-wrap-align-center {text-align:center;}
+.common-btn-wrap-align-right {text-align:right;}
+
+.common-btn-wrap a,
+.common-btn-wrap input[type=submit],
+.common-btn-wrap input[type=button],
+.common-btn-wrap button {display:inline-block;padding:5px 15px;color:#fff;border:1px solid #aaa;
+	border-radius:3px;background:#aaa;}
+
+.common-btn-wrap a:hover,
+.common-btn-wrap input[type=submit]:hover,
+.common-btn-wrap input[type=button]:hover,
+.common-btn-wrap button:hover {border-color:#ccc;background:#ccc;}
+
+.common-btn-wrap .normal {color:#333;border:1px solid #555;background:#fff;}
+.common-btn-wrap .normal:hover {color:#fff;border:1px solid #999;background:#999;}
+
+.common-btn-wrap .normal-black {color:#fff;border-color:#333;background:#333;}
+.common-btn-wrap .normal-black:hover {}
+
+.common-btn-wrap .write {color:#333;border:1px solid #555;background:#fff;}
+.common-btn-wrap .write:hover {color:#fff;border-color:green;background:green;}
+
+.common-btn-wrap .write-black {color:#fff;border-color:#333;background:#333;}
+.common-btn-wrap .write-black:hover {border-color:green;background:green;}
+
+.common-btn-wrap .update {border-color:green;background:green;}
+.common-btn-wrap .update:hover {border-color:darkgreen;background:darkgreen;}
+
+.common-btn-wrap .modify {text-shadow:1px 1px 3px darkorange;border-color:gold;background:gold;}
+.common-btn-wrap .modify:hover {border-color:orange;background:orange;}
+
+.common-btn-wrap .delete {border-color:tomato;background:tomato;}
+.common-btn-wrap .delete:hover {border-color:red;background:red;}
