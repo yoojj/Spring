@@ -1,6 +1,5 @@
-package ex.beanFactory;
+package ex.di.xmlconfig;
 
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -12,52 +11,45 @@ import ex.bean.BoardService;
 
 public class ApplicationContextTest {
 	
-	String beanLocation;
+	private String beanLocation = "ex/di/xmlconfig/beans.xml";
 	
-	@Before 
-	public void init() {
-		this.beanLocation = "ex/beanFactory/beans.xml";
-	}
-	
-	@Test @Ignore
+	@Test 
 	public void applicationContextTest() {
 
 		@SuppressWarnings("resource")
-		final ApplicationContext context = 
-			new ClassPathXmlApplicationContext(beanLocation);
+		final ApplicationContext context = new ClassPathXmlApplicationContext(beanLocation);
 		
-		final BoardService board = (BoardService) context.getBean("notice");
+		final BoardService service = context.getBean("boardService", BoardService.class);
 		
-		board.select(1);
+		System.out.println(service.select().toString());
 		
 	}
 	
 	@Test @Ignore
 	public void abstractApplicationContexTest() {
 		
-		final AbstractApplicationContext context = 
-			new ClassPathXmlApplicationContext(beanLocation);
+		final AbstractApplicationContext context = new ClassPathXmlApplicationContext(beanLocation);
 		
-		final BoardService board = (BoardService) context.getBean("notice");
+		final BoardService service = context.getBean("boardService", BoardService.class);
 		
-		board.select(1);
+		System.out.println(service.select().toString());
 		
 		context.close();
 		
+		
 	}
 	
-	@Test
+	@Test @Ignore
 	public void genericXmlApplicationContextTest() {
 		
-		final AbstractApplicationContext context = 
-			new GenericXmlApplicationContext(beanLocation);
+		final AbstractApplicationContext context = new GenericXmlApplicationContext(beanLocation);
 		
-		final BoardService board = (BoardService) context.getBean("notice");
+		final BoardService service = context.getBean("boardService", BoardService.class);
 		
-		board.select(1);
+		System.out.println(service.select().toString());
 		
 		context.close();
 		
 	}
-	
+
 }
