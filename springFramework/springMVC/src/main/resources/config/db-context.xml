@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+
+
+	<bean id="encryptorConfig" class="org.jasypt.encryption.pbe.config.EnvironmentPBEConfig">  
+		<property name="algorithm" value="PBEWithMD5AndDES" />  
+		<property name="password" value="aaaaaa" />
+	</bean>  
+ 
+	<bean id="encryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">  
+		<property name="config" ref="encryptorConfig" />  
+	</bean>  
+ 
+	<bean class="org.jasypt.spring31.properties.EncryptablePropertyPlaceholderConfigurer">
+		<constructor-arg ref="encryptor" />
+		<property name="locations" value="classpath:properties/db.properties" />
+	</bean>
+	
+	
+	
+	<util:properties id="database" location="classpath:properties/db.properties" />
+	
+ 
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="#{database['JDBC.Driver']}" />
+		<property name="url"             value="#{database['JDBC.ConnectionURL']}" />
+		<property name="username"        value="#{database['JDBC.Username']}" />
+		<property name="password"        value="${JDBC.Password}" />
+	</bean>
+	
+	
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:sql/sql-mapping-config.xml"/>
+		<property name="mapperLocations" value="classpath:sql/mapper/test-mapper.xml" />
+	</bean>
+
+	
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+
+
+
+	<mybatis:scan base-package="ex.spring.framework" factory-ref="sqlSessionFactory" />
+
+
+
+</beans>
