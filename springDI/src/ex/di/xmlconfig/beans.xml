@@ -5,18 +5,43 @@
 
 
 
-	<!-- constructor -->
+	<bean id="boardService" name="Alias AliasAlias" class="ex.bean.BoardServiceImpl" />
+
+	
+
+	<!-- 
+	<bean id="" name="" class="" singleton="" lazy-init=""/>
+
+	id : 빈 고유 이름 지정 
+	name : 빈 알리아스 지정, 복수 지정이 가능하며 띄어쓰기, 콤마, 따옴표를 사용해 구분 
+	class : 빈으로 등록할 클래스명 지정 
+	
+	abstract : 빈이 추상 클래스인지 여부 지정, 기본값은 false 
+	
+	singleton : 빈 싱글톤 여부 지정, 기본값은 true 
+	lazy-init : 빈 로딩 지연 여부 지정 
+	
+	init-method : 빈을 초기화 할 메소드 지정 
+	destroy-method : 빈을 종료시킬 메소드 지정 
+	-->
+	
+	
+	
+	<!--
+	생성자 주입 
 	<bean id="" class="">
 		<constructor-arg index="0" type="" value=""/>
+		<constructor-arg index="1" type="" ref=""/>
 	</bean>
 	
 	
-	
-	<!-- setter -->
+	메소드 주입 
 	<bean id="" class="">
 		<property name="" value="" />
+		<property name="" ref="" />
 	</bean>
-		
-		
-		
+	-->
+	
+	
+	
 </beans>
