@@ -13,10 +13,10 @@ import org.junit.Test;
 
 public class ResourceTest {
 
-	@Test
+	@Test 
 	public void classPathResource() throws IOException {
 
-		final Resource resource = new ClassPathResource("resource/beans.xml");
+		final Resource resource = new ClassPathResource("ex/di/xmlconfig/beans.xml");
 		
 		System.out.println(resource.exists());
 
@@ -25,7 +25,7 @@ public class ResourceTest {
 	@Test @Ignore
 	public void fileSystemResource() throws IOException {
 		
-		final Resource resource = new FileSystemResource("bin/resource/beans.xml");
+		final Resource resource = new FileSystemResource("bin/ex/di/xmlconfig/beans.xml");
 		
 		System.out.println(resource.exists());
 		
@@ -35,7 +35,7 @@ public class ResourceTest {
 	public void inputStreamResource() throws IOException {
 		
 		final Resource resource = new InputStreamResource(
-				this.getClass().getResourceAsStream("/resource/beans.xml"));
+				this.getClass().getResourceAsStream("/ex/di/xmlconfig/beans.xml"));
 		
 		System.out.println(resource.exists());
 		
@@ -44,7 +44,7 @@ public class ResourceTest {
 	@Test @Ignore
 	public void urlResource() throws IOException {
 		
-		final Resource resource = new UrlResource("file:/home/생략/bin/resource/beans.xml");
+		final Resource resource = new UrlResource("file:/home/생략/bin/ex/di/xmlconfig/beans.xml");
 		
 		System.out.println(resource.exists());
 		
