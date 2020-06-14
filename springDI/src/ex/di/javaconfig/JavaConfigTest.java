@@ -1,4 +1,4 @@
-package ex.beanFactory;
+package ex.di.javaconfig;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -7,32 +7,26 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import ex.bean.BoardService;
-import ex.bean.CommunityBoardServiceImpl;
-import ex.bean.NoticeBoardServiceImpl;
+import ex.bean.BoardServiceImpl;
+
 
 @Configuration
 public class JavaConfigTest {
 
-	@Bean(name="notice")
-	public BoardService getNotice() {
-		return new NoticeBoardServiceImpl();
-	}
-	
-	@Bean(name="community")
-	public BoardService getCommunity() {
-		return new CommunityBoardServiceImpl();
+	@Bean(name="service")
+	public BoardService getService() {
+		return new BoardServiceImpl();
 	}
 	
 	@SuppressWarnings("resource")
 	@Test
 	public void test() {
 		
-		final ApplicationContext context = 
-				new AnnotationConfigApplicationContext(JavaConfigTest.class);
+		final ApplicationContext context = new AnnotationConfigApplicationContext(JavaConfigTest.class);
 		
-		final BoardService board = (BoardService) context.getBean("community");
+		final BoardService service = (BoardService) context.getBean("service");
 		
-		board.insert(null);
+		System.out.println(service.select().toString());
 
 	}
 	
