@@ -40,6 +40,7 @@ public class BeanFactoryTest {
 		// 해당 이름과 클래스로 지정된 빈 인스턴스 생성 
 		factory.getBean("boardService", BoardService.class);
 		factory.getBean("Alias", BoardService.class);
+	
 	}
 	
 	@Test 
@@ -49,13 +50,9 @@ public class BeanFactoryTest {
 		final BeanFactory factory = new XmlBeanFactory(new ClassPathResource("ex/di/xmlconfig/beans.xml"));
 
 		// 2. 빈 인스턴스 생성 
+		final Board board = factory.getBean("board", Board.class);
 		final BoardService service = factory.getBean("boardService", BoardService.class);
-		
-		final Board board = new Board();
-		board.setNo(1);
-		board.setTitle("title");
-		board.setContent("content");
-		
+
 		System.out.println(service.insert(board));
 		System.out.println(service.select().toString());
 
