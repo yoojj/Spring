@@ -27,20 +27,21 @@
 	
 	
 	
-	<!--
-	생성자 주입 
-	<bean id="" class="">
-		<constructor-arg index="0" type="" value=""/>
-		<constructor-arg index="1" type="" ref=""/>
+	<bean id="board" name="boardConstructor" class="ex.bean.Board">
+		<constructor-arg index="0" value="0"/>
+		<constructor-arg index="1" value="constructor"/>
+		<constructor-arg index="2" ref="StringContent"/>
 	</bean>
 	
-	
-	메소드 주입 
-	<bean id="" class="">
-		<property name="" value="" />
-		<property name="" ref="" />
+	<bean id="boardProperty" class="ex.bean.Board">
+		<property name="no" value="1" />
+		<property name="title" value="property" />
+		<property name="content" ref="StringContent"/>
 	</bean>
-	-->
+	
+	<bean id="StringContent" class="java.lang.String">
+		<constructor-arg value="content" />
+	</bean>
 	
 	
 	
