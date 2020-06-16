@@ -9,7 +9,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 @ControllerAdvice
 public class ExceptionController {
-
+	
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String error404(NoHandlerFoundException e, Model model) {
@@ -19,7 +19,17 @@ public class ExceptionController {
 		return "/404";
 	}
 
+	@ExceptionHandler(IllegalArgumentException.class)
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public String error400(IllegalArgumentException e, Model model) {
+
+		model.addAttribute("error", "404");
+		
+		return "/404";
+	}
+	
 	@ExceptionHandler(PageNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String pageNotFoundException(PageNotFoundException e, Model model) {
 
 		model.addAttribute("error", e.getMessage());
