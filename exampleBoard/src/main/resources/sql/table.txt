@@ -1,0 +1,18 @@
+CREATE TABLE board (
+    bno                       INT(10)                  PRIMARY KEY AUTO_INCREMENT, 
+    groupBno                  INT(10)                  ,
+    groupOrder                INT(10)                  ,
+    groupDepth                INT(10)                  ,
+    
+    title                     VARCHAR(300)             NOT NULL,
+    content                   LONGTEXT                 ,
+    
+    hit                       INT(10)                  ,
+ 
+    writer                    VARCHAR(100)             ,
+    insertDate               DATETIME                 ,
+    updateDate               VARCHAR(50)              ,
+    deleteDate               VARCHAR(50)              ,
+
+    status                    BOOLEAN                  DEFAULT TRUE
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARACTER SET UTF8;
