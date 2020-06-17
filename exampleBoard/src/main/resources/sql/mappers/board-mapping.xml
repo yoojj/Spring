@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ex.board.spring.board.mapper.BoardMapper">
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="bno">    
+	 INSERT /* Board.insert() */
+	   INTO board(groupBno, groupOrder, groupDepth, title, content, hit, writer, insertDate, status)
+	 VALUES ( #{groupBno}
+	        , #{groupOrder}
+	        , #{groupDepth}
+	        , #{title} 
+	        , #{content}
+	        , 0
+	        , #{writer}
+	        , now()
+	        , true )       
+	</insert>
+   
+   
+   
+   <select id="selectBno" resultType="int">
+	 SELECT /* Board.selectBno() */
+  COALESCE(MAX(bno), 0) AS WhenReturnSetIsEmpty
+      FROM board 
+     WHERE bno = #{bno}
+       AND status = true 
+   </select>
+	
+	<select id="selectTotalPost" resultType="int">
+	 SELECT /* Board.selectTotalPost() */
+	  COUNT(bno)
+      FROM board 
+     WHERE status = true
+   </select>
+   
+	<select id="select" resultType="board">
+	 SELECT /* Board.select() */
+	        bno, groupBno, groupOrder, groupDepth, title, content, hit, writer, insertDate, updateDate, status
+      FROM board 
+     WHERE bno = #{bno}
+       AND status = true
+	</select>   
+
+	<select id="selectList" resultType="board">
+	 SELECT /* Board.selectList() */
+	        bno, groupBno, groupOrder, groupDepth, title, content, hit, writer, insertDate, status
+      FROM board 
+     WHERE status = true
+  ORDER BY bno DESC
+     LIMIT #{postMark}, #{postList}
+	</select>   
+	
+   
+   
+	<update id="updateGroupBno">
+	 UPDATE  /* Board.updateGroupBno() */
+	        board
+	    SET groupBno = #{bno}
+	  WHERE bno = #{bno}
+	</update>
+	
+	<update id="updateHit">
+	 UPDATE  /* Board.updateHit() */
+	        board
+	    SET hit = hit + 1
+	  WHERE bno = #{bno}
+	</update>
+	
+</mapper>
