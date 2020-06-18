@@ -1,6 +1,9 @@
 package ex.board.spring.common.vo;
 
-public class Paging {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Paging implements Serializable {
 
 	/** 전체 글 개수 */
 	private int allPost;
@@ -23,17 +26,11 @@ public class Paging {
 	/** 페이지 끝 */
 	private int pageEnd;
 	
-	/** 페이지 목록 시작 */
-	private int pageListStart;
-	
-	/** 페이지 목록 끝 */
-	private int pageListEnd;
-	
 	public Paging() {
 		
 		// 설정이 없을 경우 기본 값
-		this.postList = 10;
-		this.pageList = 5;
+		this.postList = 3;
+		this.pageList = 3;
 		this.pageStart = 1;
 		
 	}
@@ -45,6 +42,12 @@ public class Paging {
 		this.pageStart = 1;
 		
 	}
+
+	public void setPaging(int allPost) {
+
+		this.setPaging(allPost, 1);
+		
+	}
 	
 	public void setPaging(int allPost, int page) {
 
@@ -53,6 +56,7 @@ public class Paging {
 		this.pageEnd = (this.allPost - 1) / this.postList + 1;
 		
 		this.init();
+		
 	}
 
 	private void init() {
@@ -60,19 +64,6 @@ public class Paging {
 		if(this.page > this.pageEnd) this.page = this.pageEnd;
 		
 		this.postMark = (this.page - 1) * postList;
-
-		if(this.page <= this.pageStart) {
-			
-			this.pageListStart = this.pageStart;
-			this.pageListEnd = this.pageList <= this.pageEnd ? this.pageList : this.pageEnd ;
-		
-		} else {
-			
-			this.pageListStart = this.pageList + (this.page - this.pageList);
-			int temp = this.pageList + this.pageListStart - 1;
-			this.pageListEnd = temp <= this.pageEnd ? temp : this.pageEnd ;
-			
-		}
 	
 	}
 	
@@ -103,14 +94,6 @@ public class Paging {
 	public int getPageEnd() {
 		return pageEnd;
 	}
-
-	public int getPageListStart() {
-		return pageListStart;
-	}
-
-	public int getPageListEnd() {
-		return pageListEnd;
-	}
 	
 	public String toSting(){
 		
@@ -125,10 +108,9 @@ public class Paging {
 		sb.append("글 시작점        [ " + postMark + " ] \n");
 		sb.append("페이지 시작      [ " + pageStart + " ] \n");
 		sb.append("페이지 끝        [ " + pageEnd + " ] \n");
-		sb.append("페이지 목록 시작 [ " + pageListStart + " ] \n");
-		sb.append("페이지 목록 끝   [ " + pageListEnd + " ] \n");
-		
+
 		return sb.toString();
+		
 	}
 	
 }
