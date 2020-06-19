@@ -112,7 +112,7 @@ public class Board implements Serializable {
 
 	public String toSting(){
 		
-		final StringBuffer sb = new StringBuffer();
+		final StringBuilder sb = new StringBuilder();
 		
 		sb.append("\n");
 		sb.append(this.getClass().getName()).append("\n");
